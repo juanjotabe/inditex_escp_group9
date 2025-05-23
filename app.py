@@ -345,7 +345,7 @@ if query:
         clicked_sku = st.selectbox("🖱️ Select SKU to view detected image", sku_options)
 
         if clicked_sku != "Select a SKU":
-            img_path = ASSETS_DIR / "assets/item_images" / f"{clicked_sku}.jpg"
+            img_path = ASSETS_DIR / "item_images" / f"{clicked_sku}.jpg"
             try:
                 st.image(img_path, caption=f"Detected image for SKU {clicked_sku}", use_container_width=True)
             except:
