@@ -1,0 +1,36 @@
+#-------------------------------------- Graphs -----------------------------------------------------------------------------
+df = pd.read_csv("D:/MSc Digital Project Management and Consulting/Term III/Live Case Study Inditex/trendai_simulator/data/trends.csv")
+
+# Página principal
+st.title("🧠 TrendAI - Fashion Trend Translator for Inditex")
+st.markdown("Simulación de insights de una inteligencia artificial para detectar y traducir tendencias de moda.")
+
+# Load mock data
+df = pd.read_csv("D:/MSc Digital Project Management and Consulting/Term III/Live Case Study Inditex/trendai_simulator/data/trends.csv")
+
+# 📊 Gráfico de Popularidad
+st.subheader("📊 Popularidad de tendencias")
+fig = px.bar(df.sort_values(by="Popularity", ascending=False),
+             x="Trend",
+             y="Popularity",
+             color="Trend",
+             text="Popularity",
+             title="Nivel de popularidad de las tendencias (%)")
+st.plotly_chart(fig, use_container_width=True)
+
+# 📋 KPIs simulados
+st.subheader("📈 Indicadores clave")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.metric("Total SKUs sugeridos", len(df))
+with col2:
+    st.metric("Popularidad media", f"{df['Popularity'].mean():.1f}%")
+with col3:
+    st.metric("Ventas proyectadas totales", f"{df['Projected_Sales'].sum():,} unidades")
+#----------------------------------------------------------------------------------------------------------------------
+
+# Recommended Products
+st.subheader("🧵 Suggested Products to Launch")
+st.dataframe(df[['Example_SKU', 'Projected_Sales', 'Launch_Quarter']], use_container_width=True)

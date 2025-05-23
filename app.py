@@ -15,6 +15,14 @@ from PIL import Image
 st.set_page_config(page_title="TrendAI - Inditex", layout="wide")  # ESTA LÍNEA DEBE SER LA PRIMERA DE STREAMLIT
 
 
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+ASSETS_DIR = BASE_DIR / "assets"
+DATA_DIR = BASE_DIR / "data"
+
+
+
 st.markdown("""
     <style>
     /* ==== ZARA-INSPIRED THEME ==== */
@@ -103,7 +111,7 @@ def get_image_base64(image_path):
 
 # Show animated carousel
 def show_logo_carousel():
-    image_folder = Path("D:/MSc Digital Project Management and Consulting/Term III/Live Case Study Inditex/trendai_simulator/assets")
+    image_folder = ASSETS_DIR
     image_files = list(image_folder.glob("*.png"))
     images_html = ""
 
@@ -266,8 +274,9 @@ if query:
         st.markdown("### 🧾 Misplaced Items Summary")
 
 
-        map_path = "D:/MSc Digital Project Management and Consulting/Term III/Live Case Study Inditex/trendai_simulator/assets/Store/store_map.png"
+        map_path = ASSETS_DIR / "Store" / "store_map.png"
         map_img = Image.open(map_path)
+
 
         # 🔽 Dropdown to filter section
         section_options = ["All"] + sorted(df_misplaced["Section"].unique())
@@ -336,7 +345,7 @@ if query:
         clicked_sku = st.selectbox("🖱️ Select SKU to view detected image", sku_options)
 
         if clicked_sku != "Select a SKU":
-            img_path = f"D:/MSc Digital Project Management and Consulting/Term III/Live Case Study Inditex/trendai_simulator/assets/item_images/{clicked_sku}.jpg"
+            img_path = ASSETS_DIR / "item_images" / f"{clicked_sku}.jpg"
             try:
                 st.image(img_path, caption=f"Detected image for SKU {clicked_sku}", use_container_width=True)
             except:
