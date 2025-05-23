@@ -159,7 +159,7 @@ show_logo_carousel()
 import streamlit.components.v1 as components
 
 st.markdown("---")
-st.markdown("🤖 Talk to Caco")
+st.markdown("🤖 Talk to kako")
 
 # Toggle voice input
 if "voice_triggered" not in st.session_state:
@@ -186,11 +186,11 @@ with col2:
 
         # Simulated typing effect using Python (char-by-char)
         if st.session_state.a == 0:
-            query = "Caco, please start the store scan".lower()
+            query = "kako, please start the store scan".lower()
         elif st.session_state.a == 1:
-            query = "Caco, show me inventory levels for SKU M123".lower()
+            query = "kako, show me inventory levels for SKU M123".lower()
         elif st.session_state.a == 2:
-            query = "Caco, show me stock turnover rate for the Aura Spring Collection".lower()
+            query = "kako, show me stock turnover rate for the Aura Spring Collection".lower()
         else:
             query = ""
             
@@ -215,7 +215,7 @@ query = st.session_state.simulated_input.lower()
 if query:
     st.markdown("💬 TrendAI Response")
 
-    if "caco, please start the store scan" in query:
+    if "kako, please start the store scan" in query:
         st.success("🛰️ Store scan initiating...")
 
         # Progress bar and messages
