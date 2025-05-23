@@ -362,7 +362,7 @@ if query:
                     st.write(f"**Recommended action:** {row['Recommended Action']}")
 
                     # Button to show image
-                    image_path = f"D:/MSc Digital Project Management and Consulting/Term III/Live Case Study Inditex/trendai_simulator/assets/item_images/{row['SKU']}.jpg"
+                    image_path = ASSETS_DIR / "item_images" / f"{row['SKU']}.jpg"
                     try:
                         with open(image_path, "rb") as img_file:
                             st.image(img_file.read(), caption=f"Detected misplaced item: {row['Item']}", use_container_width=True)
